@@ -1,0 +1,37 @@
+﻿@using BeautyShop.Models
+
+@{ 
+    beautyshopEntities db = new beautyshopEntities();
+    var categorys = db.Categorys.Where(m => m.parentid == 0).OrderBy(m => m.mno).ToList();
+}
+                    <!-- ASIDE NAV -->
+<aside class="s-12 m-4 l-3 xl-2">
+    <h4 class="margin-bottom">商品分類</h4>
+    <div class="aside-nav minimize-on-small">
+        <p class="aside-nav-text">請選擇商品分類</p>
+        <ul>
+            @foreach (var item in categorys)
+            {
+                <li>
+                    <a>@(item.mname + "類")</a>
+
+                    @{ 
+                        var subs = db.Categorys.Where(m => m.parentid == item.rowid).OrderBy(m => m.mno).ToList();
+                        if (subs != null)
+                        {
+                            <ul>
+                                @foreach (var sub in subs)
+                                {
+                                    <li>
+
+                                     
+                                    </li>
+                                }
+                            </ul>
+                        }
+                    }
+                </li>
+            }
+        </ul>
+    </div>
+</aside>

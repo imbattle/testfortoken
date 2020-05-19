@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="beautyshopModelStoreContainer" CdmEntityContainer="beautyshopEntities">
+    <EntitySetMapping Name="Categorys">
+      <EntityTypeMapping TypeName="beautyshopModel.Categorys">
+        <MappingFragment StoreEntitySet="Categorys">
+          <ScalarProperty Name="rowid" ColumnName="rowid" />
+          <ScalarProperty Name="parentid" ColumnName="parentid" />
+          <ScalarProperty Name="isenabled" ColumnName="isenabled" />
+          <ScalarProperty Name="mno" ColumnName="mno" />
+          <ScalarProperty Name="mname" ColumnName="mname" />
+          <ScalarProperty Name="remark" ColumnName="remark" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

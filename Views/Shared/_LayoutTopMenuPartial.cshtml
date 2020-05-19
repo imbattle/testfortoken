@@ -1,0 +1,48 @@
+﻿@using BeautyShop.Models
+
+@{
+    beautyshopEntities db = new beautyshopEntities();
+    var categorys = db.Categorys.Where(m => m.parentid == 0).OrderBy(m => m.mno).ToList();
+}
+
+<!-- TOP NAV -->
+<div class="line">
+    <nav>
+        <div class="top-nav">
+            <ul class="right">
+                <li><a>Home</a></li>
+                <li>
+                    <a>商品分類</a>
+                    <ul>
+                       @foreach (var item in categorys)
+                       {
+                           <li>
+                                <a>@(item.mname + "類")</a>
+
+                               @{ 
+                                   var subs = db.Categorys.Where(m => m.parentid == item.rowid).OrderBy(m => m.mno).ToList();
+                                   if (subs != null)
+                                   {
+                                       <ul>
+                                        @foreach (var sub in subs)
+                                        {
+                                            <li>
+                                                <a>
+                                                    @sub.mname
+                                                </a>
+                                            </li>
+                                        }
+                                        </ul>
+                                   }
+                               }
+                           </li>
+                        }
+                    </ul>
+                 </li>
+            <li>
+                    <a>Company</a>
+                    <ul>
+                        <li><a>About</a></li>
+                        <li><a>Location</a></li>
+                    </ul>
+            </li><li><a>Contact</a></li></ul></div></nav></div>
